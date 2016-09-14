@@ -14,6 +14,7 @@ from pytz import timezone
 import httplib2
 import os
 import time
+from unidecode import unidecode
 
 from apiclient import discovery
 import oauth2client
@@ -62,7 +63,7 @@ def main():
     cancelAllEx()
     print 'Re-adding all Google events to Exchange'
     for event in allGoogleEvents:
-        print (event.get('summary','No Description Found'))
+        print (unidecode(event.get('summary','No Description Found')))
         copyEventToExchange(event)
 
 
