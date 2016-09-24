@@ -21,9 +21,7 @@ RUN apt-get -y update && \
 	apt-get -y autoremove
 
 
-RUN git clone https://github.com/HALtheWise/gcal-exchange-sync.git /gcal-exchange
-
 COPY .credentials /.credentials
-
-CMD ["python2.7","/gcal-exchange/Synchronizer.py"]
+COPY src /src
+CMD ["python2.7","/src/Synchronizer.py"]
 #COPY
