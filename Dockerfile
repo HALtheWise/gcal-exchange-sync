@@ -23,7 +23,7 @@ RUN apt-get -y update && \
 
 RUN git clone https://github.com/HALtheWise/gcal-exchange-sync.git /gcal-exchange
 
-COPY dotcredentials /.credentials
+COPY .credentials /.credentials
 
 CMD ["python2.7","/gcal-exchange/Synchronizer.py"]
 #COPY
