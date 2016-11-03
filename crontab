@@ -7,3 +7,4 @@
 # *  *  *  *  *  command to be executed
 
   0 3,14 * *  *  root python2.7 /src/Synchronizer.py >> /var/log/sync.log 2>&1
+# * * * * * root echo "Hello world" >> /var/log/cron.log 2>&1

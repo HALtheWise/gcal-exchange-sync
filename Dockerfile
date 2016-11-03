@@ -5,6 +5,7 @@ RUN apt-get -y update && \
 	python2.7 \
 	git \
 	nano \
+	cron \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Using pip, install the various dependencies
@@ -22,7 +23,7 @@ RUN apt-get -y update && \
 COPY .credentials /.credentials
 COPY src /src
 
-# Setup Cron
+# Setup Cron, taken from https://www.ekito.fr/people/run-a-cron-job-with-docker/
 COPY crontab /etc/cron.d/calsync-cron
 RUN chmod 0644 /etc/cron.d/calsync-cron
 
