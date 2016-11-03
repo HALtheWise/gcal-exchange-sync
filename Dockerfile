@@ -1,7 +1,5 @@
 FROM ubuntu:latest
 
-# Following instructions from https://github.com/google/cloud-print-connector/wiki/Build-from-source
-
 RUN apt-get -y update && \
 	apt-get -y install \
 	python2.7 \
@@ -23,5 +21,9 @@ RUN apt-get -y update && \
 
 COPY .credentials /.credentials
 COPY src /src
-CMD ["python2.7","/src/Synchronizer.py"]
-#COPY
+
+# Setup Cron
+COPY crontab /etc/cron.d/calsync-cron
+RUN chmod 0644 /etc/cron.d/calsync-cron
+
+CMD ["cron", "-f"]
