@@ -1,4 +1,4 @@
-#! /usr/bin/python2
+#! /usr/bin/env python2
 """
 This program downloads calendar data from Google Calendar,
 then performs a one-way synchronization
@@ -13,6 +13,7 @@ from pytz import timezone
 
 import httplib2
 import os
+import sys
 import time
 from unidecode import unidecode
 
@@ -31,6 +32,8 @@ __email__ = "eric@legoaces.org"
 EX_URL = u"https://webmail.olin.edu/EWS/Exchange.asmx"
 EX_USERNAME = ''
 EX_PASSWORD = ''
+
+CREDSDIR = os.path.dirname(os.path.realpath(sys.argv[0]))+"/../.credentials"
 
 exservice = None
 gservice = None
@@ -68,10 +71,10 @@ def main():
 
 
 def loadexpwd():
-    credential_dir = '/.credentials'
+    credential_dir = CREDSDIR
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
-    credential_path = os.path.join(credential_dir,
+    credential_path = os.path.join(CREDSDIR,
                                    'exchange-credentials')
     f = open(credential_path)
     global EX_USERNAME
@@ -234,10 +237,10 @@ def goog_get_credentials():
     """
 
     SCOPES = 'https://www.googleapis.com/auth/calendar.readonly'
-    CLIENT_SECRET_FILE = '/.credentials/client_secret.json'
+    CLIENT_SECRET_FILE = CREDSDIR+'/client_secret.json'
     APPLICATION_NAME = 'Olin calendar synchronization project (beta)'
 
-    credential_dir = '/.credentials'
+    credential_dir = CREDSDIR
     if not os.path.exists(credential_dir):
         os.makedirs(credential_dir)
     credential_path = os.path.join(credential_dir,
