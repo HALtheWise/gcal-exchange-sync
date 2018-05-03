@@ -1,0 +1,19 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+name = "pypi"
+verify_ssl = true
+
+
+[dev-packages]
+
+
+
+[packages]
+
+pyexchange = "*"
+"httplib2" = "*"
+google-api-python-client = "*"
+unidecode = "*"
+"enum34" = "*"
+ipaddress = "*"

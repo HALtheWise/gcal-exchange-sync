@@ -8,17 +8,17 @@ RUN apt-get -y update && \
 	cron \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Using pip, install the various dependencies
+# Using pip, install pipenv
 RUN apt-get -y update && \
 	apt-get -y install python-pip && \
 	rm -rf /var/lib/apt/lists/* && \
-	pip install --upgrade pyexchange \
-		httplib2 \
-		google-api-python-client \
-		unidecode \
-	&& apt-get -y purge python-pip && \
+	pip install --upgrade pipenv && \
 	apt-get -y autoremove
 
+COPY Pipfile /Pipfile
+COPY Pipfile.lock /Pipfile.lock
+
+RUN pipenv install --system
 
 COPY .credentials /.credentials
 COPY src /src

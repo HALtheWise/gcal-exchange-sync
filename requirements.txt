@@ -1,4 +1,0 @@
-pyexchange
-httplib2
-google-api-python-client
-unidecode
