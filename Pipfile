@@ -1,19 +1,14 @@
 [[source]]
-
-url = "https://pypi.python.org/simple"
-name = "pypi"
+url = "https://pypi.org/simple"
 verify_ssl = true
-
+name = "pypi"
 
 [dev-packages]
 
-
-
 [packages]
-
-pyexchange = "*"
-"httplib2" = "*"
 google-api-python-client = "*"
-unidecode = "*"
-"enum34" = "*"
-ipaddress = "*"
+"google-auth-httplib2" = "*"
+google-auth-oauthlib = "*"
+
+[requires]
+python_version = "3"
