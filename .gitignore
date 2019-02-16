@@ -1,4 +1,5 @@
 .credentials/
+credentials/
 .venv/
 backup.pickle
 *~
